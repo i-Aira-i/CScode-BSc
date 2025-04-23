@@ -1,1 +1,21 @@
+#include <iostream>
+#include <unistd.h>
 
+int main() {
+    pid_t pid = fork();
+
+    if (pid < 0) {
+        std::cerr << "Fork failed\n";
+        return 1;
+    } else if (pid == 0) {
+        // Child process
+        std::cout << "Child Process: Executing child-specific code." << std::endl;
+        // Add child logic here
+    } else {
+        // Parent process
+        std::cout << "Parent Process: Executing parent-specific code." << std::endl;
+        // Add parent logic here
+    }
+
+    return 0;
+}
